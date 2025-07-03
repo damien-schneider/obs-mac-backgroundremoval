@@ -1014,15 +1014,14 @@ static void *optimized_vision_create(obs_data_t *settings, obs_source_t *source)
 			obs_log(LOG_ERROR, "Failed to create VNGeneratePersonSegmentationRequest");
 			goto error_cleanup;
 		}
-	} @catch(NSException * exception) {
+	} @catch (NSException *exception) {
 		obs_log(LOG_ERROR, "Vision framework not available: %s", [[exception description] UTF8String]);
 		goto error_cleanup;
 	}
 
 	// Initialize Metal resources (may not be available on all systems)
 	@
-	try
-	{
+	try {
 		filter->metal_device = MTLCreateSystemDefaultDevice();
 		if (!filter->metal_device) {
 			obs_log(LOG_WARNING, "Metal device not available, using fallback mode");
@@ -1049,9 +1048,7 @@ static void *optimized_vision_create(obs_data_t *settings, obs_source_t *source)
 				}
 			}
 		}
-	}
-	@catch(NSException * exception)
-	{
+	} @catch (NSException *exception) {
 		obs_log(LOG_WARNING, "Metal framework error: %s", [[exception description] UTF8String]);
 		filter->metal_device = nil;
 		filter->metal_command_queue = nil;
@@ -1094,7 +1091,7 @@ static void *optimized_vision_create(obs_data_t *settings, obs_source_t *source)
 			obs_log(LOG_ERROR, "Failed to create cached requests array");
 			goto error_cleanup;
 		}
-	} @catch(NSException * exception) {
+	} @catch (NSException *exception) {
 		obs_log(LOG_ERROR, "Failed to create cached objects: %s", [[exception description] UTF8String]);
 		goto error_cleanup;
 	}
