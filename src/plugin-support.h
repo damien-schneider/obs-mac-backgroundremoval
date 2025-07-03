@@ -48,18 +48,18 @@ extern "C" {
 extern const char *PLUGIN_NAME;
 extern const char *PLUGIN_VERSION;
 
-// Standard logging levels
-#ifndef LOG_ERROR
-#define LOG_ERROR 3
+// Plugin-specific logging levels (avoiding conflict with OBS enums)
+#ifndef PLUGIN_LOG_ERROR
+#define PLUGIN_LOG_ERROR 3
 #endif
-#ifndef LOG_WARNING
-#define LOG_WARNING 4
+#ifndef PLUGIN_LOG_WARNING
+#define PLUGIN_LOG_WARNING 4
 #endif
-#ifndef LOG_INFO
-#define LOG_INFO 6
+#ifndef PLUGIN_LOG_INFO
+#define PLUGIN_LOG_INFO 6
 #endif
-#ifndef LOG_DEBUG
-#define LOG_DEBUG 7
+#ifndef PLUGIN_LOG_DEBUG
+#define PLUGIN_LOG_DEBUG 7
 #endif
 
 // Core logging functions
